@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
       body {
         font-family: "Inter", sans-serif;
         scroll-behavior: smooth;
@@ -31,8 +32,8 @@
       }
       .glass {
         background: rgba(255, 255, 255, 0.75);
-        backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
       }
       .dark .glass {
         background: rgba(15, 23, 42, 0.8);
@@ -47,15 +48,6 @@
         border-bottom-color: #2563eb;
       }
     </style>
-    <script type="importmap">
-      {
-        "imports": {
-          "react/": "https://esm.sh/react@^19.2.3/",
-          "react": "https://esm.sh/react@^19.2.3",
-          "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
-        }
-      }
-    </script>
     <link rel="stylesheet" href="/index.css" />
   </head>
   <body class="bg-slate-50 text-slate-900 transition-colors duration-300">

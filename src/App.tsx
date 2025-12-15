@@ -7,8 +7,8 @@ import Gallery from "./components/Gallery";
 import Banner from "./components/Banner";
 import Navbar from "./components/Navbar";
 import MarkdownText from "./components/MarkdownText";
-import { Config, ContentBlock } from "./types";
-import { configs } from "./config";
+import { Config, ContentBlock } from "../types";
+import { configs } from "../config";
 
 const App: React.FC = () => {
   const [locale, setLocale] = useState<"en" | "zh">("en");

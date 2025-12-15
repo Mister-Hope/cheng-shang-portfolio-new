@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { GalleryItem } from "../types";
+import { useState } from "react";
+import type { FC } from "react";
+import type { GalleryItem } from "../types.js";
 
-const Gallery: React.FC<{ items: GalleryItem[] }> = ({ items }) => {
+export const Gallery: FC<{ items: GalleryItem[] }> = ({ items }) => {
   const [selected, setSelected] = useState<GalleryItem | null>(null);
 
   return (
@@ -22,7 +23,7 @@ const Gallery: React.FC<{ items: GalleryItem[] }> = ({ items }) => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 dark:from-slate-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
               <h4 className="text-white font-bold text-lg">{item.title}</h4>
               <p className="text-white/70 dark:text-white/60 text-sm flex items-center gap-2">
-                <i className="fa-solid fa-location-dot text-xs"></i>
+                <i className="fa-solid fa-location-dot text-xs" />
                 {item.location} {item.date && `• ${item.date}`}
               </p>
             </div>
@@ -44,7 +45,7 @@ const Gallery: React.FC<{ items: GalleryItem[] }> = ({ items }) => {
               className="absolute -top-12 right-0 text-white/50 hover:text-white transition-colors"
               onClick={() => setSelected(null)}
             >
-              <i className="fa-solid fa-xmark text-3xl"></i>
+              <i className="fa-solid fa-xmark text-3xl" />
             </button>
             <div className="bg-white/5 p-2 rounded-2xl overflow-hidden shadow-2xl">
               <img
@@ -59,7 +60,7 @@ const Gallery: React.FC<{ items: GalleryItem[] }> = ({ items }) => {
                   {selected.title}
                 </h3>
                 <p className="text-blue-400 dark:text-blue-500 font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2">
-                  <i className="fa-solid fa-location-dot"></i>
+                  <i className="fa-solid fa-location-dot" />
                   {selected.location} {selected.date && `• ${selected.date}`}
                 </p>
               </div>

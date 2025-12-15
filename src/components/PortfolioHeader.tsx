@@ -1,12 +1,12 @@
-import React from "react";
-import { Config } from "../types";
-import Typewriter from "./Typewriter";
+import type { FC } from "react";
+import type { Config } from "../types.js";
+import { Typewriter } from "./Typewriter.jsx";
 
 interface Props {
   config: Config;
 }
 
-const PortfolioHeader: React.FC<Props> = ({ config }) => {
+export const PortfolioHeader: FC<Props> = ({ config }) => {
   return (
     <header className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       {/* Background with Overlay */}
@@ -14,7 +14,7 @@ const PortfolioHeader: React.FC<Props> = ({ config }) => {
         className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000 hover:scale-105"
         style={{ backgroundImage: `url(${config.bgImage})` }}
       >
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]"></div>
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
       </div>
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-24 text-white">
@@ -52,7 +52,7 @@ const PortfolioHeader: React.FC<Props> = ({ config }) => {
                 className="group flex items-center gap-3 bg-white/10 hover:bg-white/25 px-6 py-3 rounded-full border border-white/20 backdrop-blur-xl transition-all duration-500 transform hover:-translate-y-2 shadow-lg"
                 title={media.name}
               >
-                <i className={`${media.icon} text-xl`}></i>
+                <i className={`${media.icon} text-xl`} />
                 <span className="hidden sm:inline text-base font-black tracking-wide">
                   {media.name}
                 </span>
@@ -64,7 +64,7 @@ const PortfolioHeader: React.FC<Props> = ({ config }) => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-80 cursor-pointer">
-        <i className="fa-solid fa-chevron-down text-3xl text-white"></i>
+        <i className="fa-solid fa-chevron-down text-3xl text-white" />
       </div>
     </header>
   );

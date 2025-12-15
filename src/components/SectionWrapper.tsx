@@ -1,13 +1,13 @@
-import React from "react";
+import type { FC, ReactNode } from "react";
 
 interface Props {
   title: string;
   icon?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   id?: string;
 }
 
-const SectionWrapper: React.FC<Props> = ({ title, icon, children, id }) => {
+export const SectionWrapper: FC<Props> = ({ title, icon, children, id }) => {
   return (
     <section
       id={id}
@@ -19,7 +19,7 @@ const SectionWrapper: React.FC<Props> = ({ title, icon, children, id }) => {
           {icon && (
             <i
               className={`fa-solid ${icon} text-3xl md:text-4xl lg:text-5xl text-blue-600 dark:text-blue-400 flex-shrink-0`}
-            ></i>
+            />
           )}
           <div className="space-y-2">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter text-slate-900 dark:text-slate-100 leading-none">
@@ -35,5 +35,3 @@ const SectionWrapper: React.FC<Props> = ({ title, icon, children, id }) => {
     </section>
   );
 };
-
-export default SectionWrapper;

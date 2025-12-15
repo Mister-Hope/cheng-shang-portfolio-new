@@ -1,5 +1,6 @@
-import React from "react";
-import MarkdownText from "./MarkdownText";
+import type { FC } from "react";
+
+import MarkdownText from "./MarkdownText.js";
 
 interface Action {
   label: string;
@@ -15,7 +16,7 @@ interface BannerProps {
   actions: Action[];
 }
 
-const Banner: React.FC<BannerProps> = ({
+export const Banner: FC<BannerProps> = ({
   title,
   subtitle,
   content,
@@ -30,13 +31,17 @@ const Banner: React.FC<BannerProps> = ({
 
       <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">
         <div className="flex-1 space-y-6">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-wider">
-            Now Recruiting / CFP
-          </div>
+          {title && (
+            <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-wider">
+              {title}
+            </div>
+          )}
           <div className="space-y-2">
-            <h3 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">
-              {subtitle}
-            </h3>
+            {subtitle && (
+              <h3 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">
+                {subtitle}
+              </h3>
+            )}
             {/* 
               Targeting links inside MarkdownText specifically for the banner.
               We use white color and bold underline to contrast with the indigo/blue background.
@@ -51,7 +56,7 @@ const Banner: React.FC<BannerProps> = ({
           </div>
           {deadline && (
             <div className="flex items-center gap-3 text-sm font-semibold text-blue-200 dark:text-blue-300">
-              <i className="fa-solid fa-clock"></i>
+              <i className="fa-solid fa-clock" />
               Deadline: {deadline}
             </div>
           )}
@@ -78,5 +83,3 @@ const Banner: React.FC<BannerProps> = ({
     </div>
   );
 };
-
-export default Banner;

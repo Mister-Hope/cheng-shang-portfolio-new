@@ -1,4 +1,4 @@
-import { Config } from "./types";
+import type { Config } from "../src/types.js";
 
 export const configs: Record<string, Config> = {
   en: {

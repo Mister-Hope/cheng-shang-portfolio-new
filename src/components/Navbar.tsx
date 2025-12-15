@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "../types";
+import { useState, useEffect } from "react";
+import type { NavLink } from "../types.js";
+import type { FC } from "react";
 
 interface NavbarProps {
   links: NavLink[];
@@ -10,7 +11,7 @@ interface NavbarProps {
   brand: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({
+const Navbar: FC<NavbarProps> = ({
   links,
   locale,
   onLocaleChange,
@@ -21,9 +22,13 @@ const Navbar: React.FC<NavbarProps> = ({
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = (): void => setScrolled(window.scrollY > 50);
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return (): void => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -60,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({
               onClick={() => onLocaleChange(locale === "en" ? "zh" : "en")}
               className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all font-black text-[10px] md:text-xs uppercase tracking-widest ${scrolled ? "border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white" : "border-white/20 bg-white/10 text-white hover:bg-white hover:text-slate-900"}`}
             >
-              <i className="fa-solid fa-language text-sm md:text-base"></i>
+              <i className="fa-solid fa-language text-sm md:text-base" />
               {locale === "en" ? "CN" : "EN"}
             </button>
 
@@ -75,7 +80,7 @@ const Navbar: React.FC<NavbarProps> = ({
             >
               <i
                 className={`fa-solid ${theme === "light" ? "fa-moon" : "fa-sun"} text-sm md:text-base`}
-              ></i>
+              />
             </button>
           </div>
         </div>

@@ -1,8 +1,8 @@
-import React from "react";
-import { TimelineItem } from "../types";
-import MarkdownText from "./MarkdownText";
+import type { FC } from "react";
+import type { TimelineItem } from "../types.js";
+import MarkdownText from "./MarkdownText.js";
 
-const Timeline: React.FC<{ items: TimelineItem[] }> = ({ items }) => {
+export const Timeline: FC<{ items: TimelineItem[] }> = ({ items }) => {
   return (
     <div className="grid grid-cols-1 gap-4">
       {items.map((item, idx) => (
@@ -32,7 +32,7 @@ const Timeline: React.FC<{ items: TimelineItem[] }> = ({ items }) => {
               >
                 {item.linkText ||
                   (item.link.includes("riken") ? "Press" : "Detail")}
-                <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <i className="fa-solid fa-arrow-up-right-from-square text-[10px]" />
               </a>
             </div>
           )}
@@ -41,5 +41,3 @@ const Timeline: React.FC<{ items: TimelineItem[] }> = ({ items }) => {
     </div>
   );
 };
-
-export default Timeline;

@@ -1,8 +1,8 @@
-import React from "react";
-import { ExperienceItem } from "../types";
-import MarkdownText from "./MarkdownText";
+import type { FC } from "react";
+import type { ExperienceItem } from "../types.js";
+import MarkdownText from "./MarkdownText.js";
 
-const Experience: React.FC<{ items: ExperienceItem[] }> = ({ items }) => {
+export const Experience: FC<{ items: ExperienceItem[] }> = ({ items }) => {
   return (
     <div className="space-y-10 pl-0 md:pl-4">
       {items.map((item, idx) => (
@@ -18,7 +18,7 @@ const Experience: React.FC<{ items: ExperienceItem[] }> = ({ items }) => {
           >
             <i
               className={`fa-solid ${item.type === "study" ? "fa-book-open" : "fa-briefcase"} text-[9px] md:text-[10px] text-white`}
-            ></i>
+            />
           </div>
 
           <div className="flex flex-col gap-3 md:gap-4">
@@ -28,7 +28,7 @@ const Experience: React.FC<{ items: ExperienceItem[] }> = ({ items }) => {
                 {item.time}
               </span>
               <div className="inline-flex items-center gap-1.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-[10px] md:text-xs font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 shadow-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all">
-                <i className="fa-solid fa-location-dot"></i>
+                <i className="fa-solid fa-location-dot" />
                 {item.place}
               </div>
             </div>
@@ -41,7 +41,7 @@ const Experience: React.FC<{ items: ExperienceItem[] }> = ({ items }) => {
                 >
                   <i
                     className={`fa-solid ${item.icon || (item.type === "study" ? "fa-graduation-cap" : "fa-briefcase")} text-lg md:text-2xl`}
-                  ></i>
+                  />
                 </div>
                 <div className="space-y-1.5 flex-1 min-w-0">
                   <h3 className="text-lg md:text-2xl font-black text-slate-900 dark:text-slate-100 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors break-words">
@@ -68,5 +68,3 @@ const Experience: React.FC<{ items: ExperienceItem[] }> = ({ items }) => {
     </div>
   );
 };
-
-export default Experience;

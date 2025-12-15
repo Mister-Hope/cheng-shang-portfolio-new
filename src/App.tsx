@@ -1,25 +1,30 @@
-import React, { useState, useEffect } from "react";
-import PortfolioHeader from "./components/PortfolioHeader";
-import SectionWrapper from "./components/SectionWrapper";
-import Experience from "./components/Experience";
-import Timeline from "./components/Timeline";
-import Gallery from "./components/Gallery";
-import Banner from "./components/Banner";
+import type { FC } from "react";
+import { useState, useEffect } from "react";
+import { PortfolioHeader } from "./components/PortfolioHeader.jsx";
+import { SectionWrapper } from "./components/SectionWrapper.jsx";
+import { Experience } from "./components/Experience.jsx";
+import { Timeline } from "./components/Timeline";
+import { Gallery } from "./components/Gallery.jsx";
+import { Banner } from "./components/Banner.jsx";
 import Navbar from "./components/Navbar";
 import MarkdownText from "./components/MarkdownText";
-import { Config, ContentBlock } from "../types";
-import { configs } from "../config";
+import type { Config, ContentBlock } from "./types.js";
 
-const App: React.FC = () => {
+import { configs } from "../config/index.js";
+
+const App: FC = () => {
   const [locale, setLocale] = useState<"en" | "zh">("en");
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("theme");
+
       if (saved) return saved as "light" | "dark";
+
       return window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light";
     }
+
     return "light";
   });
   const [config, setConfig] = useState<Config>(configs[locale]);
@@ -30,6 +35,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const root = window.document.documentElement;
+
     if (theme === "dark") {
       root.classList.add("dark");
     } else {
@@ -38,7 +44,7 @@ const App: React.FC = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggleTheme = () =>
+  const toggleTheme = (): void =>
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
   const i18n = {
@@ -66,7 +72,7 @@ const App: React.FC = () => {
             <div className="space-y-8">
               <div>
                 <h4 className="text-xs font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-3 flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 w-fit px-3 py-1.5 rounded-lg">
-                  <i className="fa-solid fa-building-columns"></i>{" "}
+                  <i className="fa-solid fa-building-columns" />{" "}
                   {i18n.affiliation}
                 </h4>
                 <p className="text-slate-800 dark:text-slate-100 font-black text-2xl md:text-3xl leading-tight">
@@ -75,7 +81,7 @@ const App: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-xs font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-4 flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 w-fit px-3 py-1.5 rounded-lg">
-                  <i className="fa-solid fa-paper-plane"></i> {i18n.contact}
+                  <i className="fa-solid fa-paper-plane" /> {i18n.contact}
                 </h4>
                 <ul className="grid grid-cols-1 gap-5">
                   {block.data.contact.map((c: any, i: number) => (
@@ -83,7 +89,7 @@ const App: React.FC = () => {
                       <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-white/5 flex items-center justify-center text-slate-400 dark:text-slate-500 transition-all duration-500">
                         <i
                           className={`fa-solid ${c.label.toLowerCase().includes("riken") ? "fa-at" : c.label.toLowerCase().includes("utokyo") || c.label.toLowerCase().includes("东京大学") ? "fa-university" : "fa-envelope"} text-base`}
-                        ></i>
+                        />
                       </div>
                       <div className="flex flex-col">
                         <span className="text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest mb-0.5">
@@ -103,7 +109,7 @@ const App: React.FC = () => {
             </div>
             <div>
               <h4 className="text-xs font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-5 flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 w-fit px-3 py-1.5 rounded-lg">
-                <i className="fa-solid fa-heart"></i> {i18n.interests}
+                <i className="fa-solid fa-heart" /> {i18n.interests}
               </h4>
               <div className="flex flex-wrap gap-3">
                 {block.data.interests.map((interest: string, i: number) => (
@@ -117,7 +123,7 @@ const App: React.FC = () => {
               </div>
               {block.data.quote && (
                 <div className="mt-10 p-7 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-[2rem] border border-blue-100/50 dark:border-blue-400/10 relative overflow-hidden">
-                  <i className="fa-solid fa-quote-left absolute -top-1 -left-1 text-5xl text-blue-500/5 select-none"></i>
+                  <i className="fa-solid fa-quote-left absolute -top-1 -left-1 text-5xl text-blue-500/5 select-none" />
                   <p className="text-base text-blue-800 dark:text-blue-300 font-black leading-relaxed relative z-10 italic">
                     "<MarkdownText content={block.data.quote} />"
                   </p>
@@ -132,7 +138,7 @@ const App: React.FC = () => {
         return (
           <Banner
             title={block.title}
-            subtitle={block.subtitle || ""}
+            subtitle={block.subtitle ?? ""}
             content={block.data.content}
             deadline={block.data.deadline}
             actions={block.data.actions}
@@ -164,7 +170,7 @@ const App: React.FC = () => {
                   </p>
                   <span className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {i18n.viewPdf}{" "}
-                    <i className="fa-solid fa-file-pdf text-lg"></i>
+                    <i className="fa-solid fa-file-pdf text-lg" />
                   </span>
                 </div>
               </a>
@@ -173,7 +179,7 @@ const App: React.FC = () => {
         );
       case "list":
         const ListTag = block.config?.listType === "ol" ? "ol" : "ul";
-        const listStyle = block.config?.listStyle || "check";
+        const listStyle = block.config?.listStyle ?? "check";
 
         return (
           <ListTag
@@ -195,7 +201,7 @@ const App: React.FC = () => {
                     }`}
                   >
                     {listStyle === "check" && (
-                      <i className="fa-solid fa-circle-check text-blue-400 dark:text-blue-500 text-lg"></i>
+                      <i className="fa-solid fa-circle-check text-blue-400 dark:text-blue-500 text-lg" />
                     )}
                     {(listStyle === "circle" || listStyle === "square") && (
                       <div className="w-2 h-2 rounded-full bg-blue-500"></div>

@@ -1,4 +1,4 @@
-import React from "react";
+import type { FC } from "react";
 
 // Use markdown-it from global scope
 declare const markdownit: any;
@@ -12,12 +12,10 @@ interface MarkdownTextProps {
   className?: string;
 }
 
-const MarkdownText: React.FC<MarkdownTextProps> = ({
-  content,
-  className = "",
-}) => {
+const MarkdownText: FC<MarkdownTextProps> = ({ content, className = "" }) => {
   if (!md) return <span className={className}>{content}</span>;
   const html = md.renderInline(content);
+
   return (
     <span
       className={`markdown-content ${className}`}

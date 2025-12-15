@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+
+import type { FC } from "react";
 
 interface TypewriterProps {
   texts: string[];
@@ -6,7 +8,7 @@ interface TypewriterProps {
   pause?: number;
 }
 
-const Typewriter: React.FC<TypewriterProps> = ({
+export const Typewriter: FC<TypewriterProps> = ({
   texts,
   speed = 100,
   pause = 2000,
@@ -18,12 +20,14 @@ const Typewriter: React.FC<TypewriterProps> = ({
   useEffect(() => {
     if (subIndex === texts[index].length + 1 && !reverse) {
       setTimeout(() => setReverse(true), pause);
+
       return;
     }
 
     if (subIndex === 0 && reverse) {
       setReverse(false);
       setIndex((prev) => (prev + 1) % texts.length);
+
       return;
     }
 
@@ -31,7 +35,9 @@ const Typewriter: React.FC<TypewriterProps> = ({
       setSubIndex((prev) => prev + (reverse ? -1 : 1));
     }, speed);
 
-    return () => clearTimeout(timeout);
+    return (): void => {
+      clearTimeout(timeout);
+    };
   }, [subIndex, index, reverse, texts, speed, pause]);
 
   return (
@@ -40,5 +46,3 @@ const Typewriter: React.FC<TypewriterProps> = ({
     </span>
   );
 };
-
-export default Typewriter;

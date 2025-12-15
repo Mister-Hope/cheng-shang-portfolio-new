@@ -11,7 +11,8 @@ export type ContentBlockType =
   | "timeline"
   | "cards"
   | "list"
-  | "gallery";
+  | "gallery"
+  | "paragraph";
 
 export interface ExperienceItem {
   type: "study" | "work";
@@ -78,7 +79,10 @@ export interface Config {
   bgImage: string;
   medias: PortfolioMedia[];
   contents: ContentBlock[];
-  footer: string;
+  footer: {
+    copyright: string;
+    description?: string;
+  };
   navbar?: {
     links: NavLink[];
   };

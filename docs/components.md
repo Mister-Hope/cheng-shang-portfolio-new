@@ -87,3 +87,9 @@ A masonry-style photo wall with an interactive lightbox.
   - `location`: Optional location string.
   - `date`: Optional date string.
   - `description`: Optional long-form story (markdown supported).
+
+### 8. Paragraph (`paragraph`)
+
+A simple text block that renders Markdown or HTML content. Ideal for conclusions, about sections, or custom descriptions.
+
+- **Data Schema**: String (Markdown or HTML supported).

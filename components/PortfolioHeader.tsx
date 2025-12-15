@@ -14,46 +14,46 @@ const PortfolioHeader: React.FC<Props> = ({ config }) => {
         className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000 hover:scale-105"
         style={{ backgroundImage: `url(${config.bgImage})` }}
       >
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12 text-white">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-24 text-white">
         {/* Avatar Section */}
-        <div className="w-48 h-48 md:w-80 md:h-80 relative group">
-          <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-2xl group-hover:bg-blue-500/50 transition-all duration-500"></div>
+        <div className="w-56 h-56 md:w-80 md:h-80 lg:w-96 lg:h-96 relative group flex-shrink-0">
+          <div className="absolute inset-0 bg-blue-500/40 rounded-full blur-3xl group-hover:bg-blue-500/60 transition-all duration-500"></div>
           <img
             src={config.avatar}
             alt={config.name}
-            className="w-full h-full object-cover rounded-full border-4 border-white/20 shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700"
+            className="w-full h-full object-cover rounded-full border-8 border-white/20 shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700 hover:scale-[1.02]"
           />
         </div>
 
         {/* Info Section */}
-        <div className="flex-1 text-center md:text-left space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-2xl md:text-4xl font-black text-blue-300 tracking-widest uppercase">
+        <div className="flex-1 text-center lg:text-left space-y-8 max-w-3xl">
+          <div className="space-y-4">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-blue-300 tracking-[0.2em] uppercase drop-shadow-lg">
               {config.welcome}
             </h2>
-            <h1 className="text-5xl md:text-8xl font-black tracking-tight leading-none">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none drop-shadow-2xl">
               {config.name}
             </h1>
-            <div className="text-2xl md:text-3xl font-medium text-blue-100/90 h-10">
+            <div className="text-xl md:text-3xl lg:text-4xl font-black text-blue-100/95 h-12 md:h-16 tracking-tight">
               <Typewriter texts={config.titles} />
             </div>
           </div>
 
-          <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-5 pt-8">
             {config.medias.map((media, idx) => (
               <a
                 key={idx}
                 href={media.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full border border-white/10 backdrop-blur-md transition-all duration-300 transform hover:-translate-y-1"
+                className="group flex items-center gap-3 bg-white/10 hover:bg-white/25 px-6 py-3 rounded-full border border-white/20 backdrop-blur-xl transition-all duration-500 transform hover:-translate-y-2 shadow-lg"
                 title={media.name}
               >
-                <i className={`${media.icon} text-lg`}></i>
-                <span className="hidden lg:inline text-sm font-medium">
+                <i className={`${media.icon} text-xl`}></i>
+                <span className="hidden sm:inline text-base font-black tracking-wide">
                   {media.name}
                 </span>
               </a>
@@ -63,8 +63,8 @@ const PortfolioHeader: React.FC<Props> = ({ config }) => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-70">
-        <i className="fa-solid fa-chevron-down text-2xl text-white"></i>
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-80 cursor-pointer">
+        <i className="fa-solid fa-chevron-down text-3xl text-white"></i>
       </div>
     </header>
   );

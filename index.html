@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SHANG CHENG | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -12,7 +24,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
-
       body {
         font-family: "Inter", sans-serif;
         scroll-behavior: smooth;
@@ -31,26 +42,29 @@
         }
       }
       .glass {
-        background: rgba(255, 255, 255, 0.75);
-        -webkit-backdrop-filter: blur(16px);
-        backdrop-filter: blur(16px);
+        background: rgba(255, 255, 255, 0.7);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
       }
       .dark .glass {
-        background: rgba(15, 23, 42, 0.8);
+        background: rgba(15, 23, 42, 0.6);
+        border-color: rgba(255, 255, 255, 0.1);
       }
       .markdown-content a {
-        color: #2563eb;
+        color: #3b82f6;
         text-decoration: none;
         border-bottom: 1px solid transparent;
         transition: all 0.2s;
       }
       .markdown-content a:hover {
-        border-bottom-color: #2563eb;
+        border-bottom-color: #3b82f6;
       }
     </style>
     <link rel="stylesheet" href="/index.css" />
   </head>
-  <body class="bg-slate-50 text-slate-900 transition-colors duration-300">
+  <body
+    class="bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100"
+  >
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

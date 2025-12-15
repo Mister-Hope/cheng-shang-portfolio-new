@@ -13,7 +13,9 @@ The application is controlled by a single configuration object (defined in `conf
   - `icon`: FontAwesome class (e.g., 'fa-brands fa-google').
   - `name`: Display name.
   - `link`: URL (or `mailto:`).
-- `footer`: String. Markdown-supported text for the footer.
+- `footer`: Object.
+  - `copyright`: String. Primary copyright notice (markdown supported). Shown in body-comparable font size.
+  - `description`: Optional String. Smaller sub-text for additional info (markdown supported).
 
 ## Navigation Bar (`navbar`)
 

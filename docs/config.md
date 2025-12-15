@@ -1,4 +1,3 @@
-
 # Global Configuration Guide
 
 The application is controlled by a single configuration object (defined in `config.ts`).
@@ -19,6 +18,7 @@ The application is controlled by a single configuration object (defined in `conf
 ## Navigation Bar (`navbar`)
 
 The sticky navbar configuration.
+
 - `links`: Array of `NavLink`.
   - `label`: Localized text for the link.
   - `anchor`: The `id` of the target content block (prefixed with `#`, e.g., `#profile`).
@@ -29,6 +29,7 @@ This is the core of the portfolio. It is an array of component configurations.
 **For detailed configuration of each block, see [components.md](./components.md).**
 
 Example:
+
 ```ts
 contents: [
   {

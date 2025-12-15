@@ -1,7 +1,6 @@
-
-import React from 'react';
-import { Config } from '../types';
-import Typewriter from './Typewriter';
+import React from "react";
+import { Config } from "../types";
+import Typewriter from "./Typewriter";
 
 interface Props {
   config: Config;
@@ -11,7 +10,7 @@ const PortfolioHeader: React.FC<Props> = ({ config }) => {
   return (
     <header className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       {/* Background with Overlay */}
-      <div 
+      <div
         className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000 hover:scale-105"
         style={{ backgroundImage: `url(${config.bgImage})` }}
       >
@@ -22,8 +21,8 @@ const PortfolioHeader: React.FC<Props> = ({ config }) => {
         {/* Avatar Section */}
         <div className="w-48 h-48 md:w-80 md:h-80 relative group">
           <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-2xl group-hover:bg-blue-500/50 transition-all duration-500"></div>
-          <img 
-            src={config.avatar} 
+          <img
+            src={config.avatar}
             alt={config.name}
             className="w-full h-full object-cover rounded-full border-4 border-white/20 shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700"
           />
@@ -54,7 +53,9 @@ const PortfolioHeader: React.FC<Props> = ({ config }) => {
                 title={media.name}
               >
                 <i className={`${media.icon} text-lg`}></i>
-                <span className="hidden lg:inline text-sm font-medium">{media.name}</span>
+                <span className="hidden lg:inline text-sm font-medium">
+                  {media.name}
+                </span>
               </a>
             ))}
           </div>

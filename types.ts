@@ -1,21 +1,20 @@
-
 export interface PortfolioMedia {
   icon: string;
   name: string;
   link: string;
 }
 
-export type ContentBlockType = 
-  | 'profile' 
-  | 'experience' 
-  | 'banner' 
-  | 'timeline' 
-  | 'cards' 
-  | 'list' 
-  | 'gallery';
+export type ContentBlockType =
+  | "profile"
+  | "experience"
+  | "banner"
+  | "timeline"
+  | "cards"
+  | "list"
+  | "gallery";
 
 export interface ExperienceItem {
-  type: 'study' | 'work';
+  type: "study" | "work";
   place: string;
   title?: string;
   time: string;
@@ -59,8 +58,8 @@ export interface ContentBlock {
   subtitle?: string;
   data?: any;
   config?: {
-    listType?: 'ul' | 'ol';
-    listStyle?: 'circle' | 'square' | 'check' | 'none';
+    listType?: "ul" | "ol";
+    listStyle?: "circle" | "square" | "check" | "none";
     columns?: number;
     accentColor?: string;
   };

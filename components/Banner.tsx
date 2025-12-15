@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 
 interface Action {
   label: string;
@@ -15,7 +14,13 @@ interface BannerProps {
   actions: Action[];
 }
 
-const Banner: React.FC<BannerProps> = ({ title, subtitle, content, deadline, actions }) => {
+const Banner: React.FC<BannerProps> = ({
+  title,
+  subtitle,
+  content,
+  deadline,
+  actions,
+}) => {
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-indigo-600 to-blue-800 rounded-[2.5rem] p-8 md:p-12 text-white shadow-2xl shadow-blue-200">
       {/* Decorative shapes */}
@@ -42,7 +47,7 @@ const Banner: React.FC<BannerProps> = ({ title, subtitle, content, deadline, act
             </div>
           )}
         </div>
-        
+
         <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
           {actions.map((action, idx) => (
             <a
@@ -51,9 +56,9 @@ const Banner: React.FC<BannerProps> = ({ title, subtitle, content, deadline, act
               target="_blank"
               rel="noopener noreferrer"
               className={`px-8 py-4 rounded-2xl font-bold text-center transition-all duration-300 transform hover:-translate-y-1 active:scale-95 ${
-                action.primary 
-                  ? 'bg-white text-blue-700 shadow-xl shadow-blue-900/20' 
-                  : 'bg-transparent border-2 border-white/30 hover:border-white hover:bg-white/10'
+                action.primary
+                  ? "bg-white text-blue-700 shadow-xl shadow-blue-900/20"
+                  : "bg-transparent border-2 border-white/30 hover:border-white hover:bg-white/10"
               }`}
             >
               {action.label}

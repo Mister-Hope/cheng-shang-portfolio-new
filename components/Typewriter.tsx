@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 interface TypewriterProps {
   texts: string[];
@@ -7,7 +6,11 @@ interface TypewriterProps {
   pause?: number;
 }
 
-const Typewriter: React.FC<TypewriterProps> = ({ texts, speed = 100, pause = 2000 }) => {
+const Typewriter: React.FC<TypewriterProps> = ({
+  texts,
+  speed = 100,
+  pause = 2000,
+}) => {
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [reverse, setReverse] = useState(false);

@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 
 interface Props {
   title: string;
@@ -21,9 +20,7 @@ const SectionWrapper: React.FC<Props> = ({ title, icon, children, id }) => {
           {title}
         </h2>
       </div>
-      <div className="pl-0 md:pl-16">
-        {children}
-      </div>
+      <div className="pl-0 md:pl-16">{children}</div>
     </section>
   );
 };

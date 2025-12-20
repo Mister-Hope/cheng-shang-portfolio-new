@@ -1,5 +1,6 @@
 import type { FC, ReactElement } from "react";
 import { useState, useEffect } from "react";
+import { flushSync } from "react-dom";
 import { Hero } from "./components/Hero.js";
 import { SectionWrapper } from "./components/SectionWrapper.js";
 import { Experience } from "./components/Experience.js";
@@ -84,8 +85,57 @@ export const App: FC<{ initialLocale?: string }> = ({ initialLocale }) => {
     }, [theme]);
   }
 
-  const toggleTheme = (): void =>
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  const toggleTheme = (event: React.MouseEvent): void => {
+    const isAppearanceTransition =
+      // @ts-expect-error: Providing backward compatibility
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      document.startViewTransition &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!isAppearanceTransition) {
+      setTheme((prev) => (prev === "light" ? "dark" : "light"));
+
+      return;
+    }
+
+    const x = event.clientX;
+    const y = event.clientY;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y),
+    );
+
+    const isDark = theme === "light";
+
+    const transition = document.startViewTransition(() => {
+      flushSync(() => {
+        setTheme(isDark ? "dark" : "light");
+      });
+
+      // Manually toggle class to ensure it's updated for the transition snapshot
+      window.document.documentElement.classList.toggle("dark", isDark);
+    });
+
+    void transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ];
+
+      document.documentElement.animate(
+        {
+          clipPath: isDark ? [...clipPath].reverse() : clipPath,
+        },
+        {
+          duration: 400,
+          easing: "ease-in",
+          pseudoElement: isDark
+            ? "::view-transition-old(root)"
+            : "::view-transition-new(root)",
+        },
+      );
+    });
+  };
 
   const handleLocaleChange = (): void => {
     const currentIndex = localePaths.indexOf(localePath);

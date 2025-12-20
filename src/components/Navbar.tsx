@@ -32,7 +32,7 @@ interface NavbarProps {
    * Callback to toggle theme
    * 切换主题的回调函数
    */
-  onThemeChange: () => void;
+  onThemeChange: (event: React.MouseEvent) => void;
   /**
    * Tooltip text for theme toggler
    * 主题切换器的提示文本
@@ -126,7 +126,7 @@ export const Navbar: FC<NavbarProps> = ({
             )}
 
             <button
-              onClick={onThemeChange}
+              onClick={(event): void => onThemeChange(event)}
               className={`nav-btn-base navbar-theme-btn ${
                 scrolled ? "nav-btn-scrolled" : "nav-btn-transparent"
               }`}

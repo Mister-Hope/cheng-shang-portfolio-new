@@ -80,11 +80,11 @@ export const Cards: FC<CardsProps> = ({ items, locale }) => {
   return (
     <div className="card-grid">
       {items.map((card, idx) => (
-        <div key={idx} className="card-base card-item">
+        <div key={idx} className="card-item card-base">
           <div className="card-decoration" />
           <div className="relative z-10">
             {card.category && (
-              <h4 className={`label-sm mb-3 ${isCJK ? "" : "tracking-widest"}`}>
+              <h4 className={`mb-3 label-sm ${isCJK ? "" : "tracking-widest"}`}>
                 {card.category}
               </h4>
             )}

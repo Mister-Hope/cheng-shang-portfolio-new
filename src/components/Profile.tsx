@@ -94,11 +94,11 @@ export interface ProfileProps {
 
 export const Profile: FC<ProfileProps> = ({ data, ui }) => {
   return (
-    <div className="card-base profile-container">
+    <div className="profile-container card-base">
       <div className="profile-fields-col">
         {data.fields?.map(({ title, value, icon }, index) => (
           <div key={index}>
-            <h4 className="label-sm profile-label">
+            <h4 className="profile-label label-sm">
               {icon && <Icon icon={icon} />}
               {title}
             </h4>
@@ -122,7 +122,7 @@ export const Profile: FC<ProfileProps> = ({ data, ui }) => {
       </div>
       <div className="profile-contact-col">
         <div>
-          <h4 className="label-sm profile-contact-header">
+          <h4 className="profile-contact-header label-sm">
             <Icon icon="paper-plane" /> {ui?.contacts ?? "Contacts"}
           </h4>
           <ul className="profile-contact-list">

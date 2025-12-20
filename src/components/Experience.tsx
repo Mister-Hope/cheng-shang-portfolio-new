@@ -112,13 +112,10 @@ export const Experience: FC<ExperienceProps> = ({ items, types = {} }) => {
                 </div>
 
                 {/* Content Box */}
-                <div className="card-base experience-card card-hover">
+                <div className="experience-card card-base">
                   <div className="flex items-start gap-3 md:gap-4">
                     <div className={`experience-icon-box ${iconClass}`}>
-                      <Icon
-                        icon={icon ?? typeIcon}
-                        className="text-lg md:text-2xl"
-                      />
+                      <Icon icon={icon ?? typeIcon} className="text-title" />
                     </div>
                     <div className="min-w-0 flex-1 space-y-1.5">
                       <h3 className="experience-title">

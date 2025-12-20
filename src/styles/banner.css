@@ -16,7 +16,7 @@
   }
 
   .banner-overlay {
-    @apply absolute inset-0 bg-gradient-to-tl from-secondary-600 to-primary-800 opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100 dark:from-secondary-800 dark:to-primary-950;
+    @apply absolute inset-0 bg-gradient-to-tl from-secondary-600 to-primary-800 opacity-0 transition-opacity duration-1500 ease-in-out group-hover:opacity-100 dark:from-secondary-800 dark:to-primary-950;
   }
 
   .banner-tag {

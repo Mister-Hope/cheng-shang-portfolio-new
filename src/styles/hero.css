@@ -36,7 +36,7 @@
   }
 
   .hero-welcome {
-    @apply text-xl font-black text-primary-300 uppercase drop-shadow-lg md:text-2xl lg:text-2xl;
+    @apply text-title font-black text-primary-300 uppercase drop-shadow-lg lg:text-2xl;
   }
 
   .hero-name {

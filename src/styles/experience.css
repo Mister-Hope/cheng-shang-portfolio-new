@@ -32,10 +32,10 @@
   }
 
   .experience-title {
-    @apply text-lg leading-tight font-black break-words text-slate-900 transition-colors md:text-xl dark:text-slate-100;
+    @apply text-subtitle leading-tight font-black break-words text-slate-900 transition-colors dark:text-slate-100;
   }
 
   .experience-description {
-    @apply pt-1 text-xs leading-relaxed font-medium text-slate-400 italic md:pt-2 md:text-base dark:text-slate-500;
+    @apply pt-1 text-main leading-relaxed font-medium text-slate-400 italic md:pt-2 dark:text-slate-500;
   }
 }

@@ -69,7 +69,7 @@ export const Timeline: FC<TimelineProps> = ({ items, ui }) => {
 
             <RichContent
               content={item.content}
-              className="text-content timeline-box"
+              className="timeline-box text-content"
               block
             />
 
@@ -82,10 +82,7 @@ export const Timeline: FC<TimelineProps> = ({ items, ui }) => {
                   className="timeline-link"
                 >
                   {item.linkText ?? ui?.details ?? "Details"}
-                  <Icon
-                    icon="arrow-up-right-from-square"
-                    className="text-[10px]"
-                  />
+                  <Icon icon="arrow-up-right-from-square" className="text-xs" />
                 </a>
               </div>
             )}

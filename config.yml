@@ -114,20 +114,17 @@ locales:
             place: AnShan, China
             time: Jul. 2020 - Aug. 2021
             title: Enjoying my gap year
-
-          - type: study
-            place: Northeast Normal University, School of Physics, China
-            time: Sep. 2016 - June 2020
-            title: Bachelor of Science, Physics
-            content: Awarded the Principal's Scholarship.
+            description: Also doing open source contributions in my spare time.
 
       - type: banner
         id: cfp
         title: Call for Papers
         icon: bullhorn
+
         data:
           header: |-
             Special Collection: Exception Points in non-Hermitian Systems
+          tags: Submit now
           content: |-
             **Journal**: Discover Physics (Springer Nature)
 

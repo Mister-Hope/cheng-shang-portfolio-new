@@ -4,15 +4,7 @@
   }
 
   .navbar-scrolled {
-    @apply border-slate-100 py-3 shadow-xl shadow-slate-200/10 md:py-4 dark:border-white/10 dark:shadow-none;
-    background: rgba(255, 255, 255, 0.7);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-  }
-
-  .dark .navbar-scrolled {
-    background: rgba(15, 23, 42, 0.6);
-    border-color: rgba(255, 255, 255, 0.1);
+    @apply glass border-slate-100 py-3 shadow-xl shadow-slate-200/10 md:py-4 dark:border-white/10 dark:shadow-none;
   }
 
   .navbar-transparent {
@@ -24,7 +16,7 @@
   }
 
   .navbar-brand {
-    @apply text-xl font-black tracking-tighter transition-all duration-300 md:text-2xl;
+    @apply text-title font-black tracking-tighter transition-all duration-300;
   }
 
   .navbar-brand-scrolled {
@@ -68,7 +60,7 @@
   }
 
   .navbar-locale-btn {
-    @apply gap-2 px-4 text-[10px] font-black tracking-widest uppercase md:text-xs;
+    @apply gap-2 px-4 text-sub font-black tracking-widest uppercase;
   }
 
   .navbar-theme-btn {

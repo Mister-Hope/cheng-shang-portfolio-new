@@ -4,7 +4,7 @@
   }
 
   .gallery-item {
-    @apply relative cursor-zoom-in break-inside-avoid overflow-hidden rounded-[1rem] shadow-sm transition-all duration-500 hover:shadow-xl md:rounded-[2rem];
+    @apply relative cursor-zoom-in break-inside-avoid overflow-hidden rounded-2xl shadow-sm transition-all duration-500 hover:shadow-xl md:rounded-4xl;
   }
 
   .gallery-image {

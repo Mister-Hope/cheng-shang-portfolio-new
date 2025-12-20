@@ -65,7 +65,7 @@ export const SectionWrapper: FC<SectionProps> = ({
             <div className="section-title-row">
               {icon && <Icon icon={icon} className="section-icon" />}
               <h2
-                className={`heading-section ${isCJK ? "" : "tracking-tighter"}`}
+                className={`section-heading ${isCJK ? "" : "tracking-tighter"}`}
               >
                 {title}
               </h2>

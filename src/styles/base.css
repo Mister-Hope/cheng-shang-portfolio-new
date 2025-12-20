@@ -26,6 +26,17 @@
   --color-secondary-950: oklch(from var(--secondary-base) 0.15 0.05 h);
 }
 
+@utility glass {
+  background: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+
+  &:where(.dark, .dark *) {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
 @utility text-title {
   @apply text-xl md:text-2xl;
 }
@@ -47,29 +58,7 @@
 }
 
 @utility card-base {
-  @apply rounded-2xl border border-slate-100 shadow-sm md:rounded-4xl dark:border-white/10;
-  background: rgba(255, 255, 255, 0.7);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-
-  &:where(.dark, .dark *) {
-    background: rgba(15, 23, 42, 0.6);
-  }
-}
-
-@utility glass {
-  background: rgba(255, 255, 255, 0.7);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-
-  &:where(.dark, .dark *) {
-    background: rgba(15, 23, 42, 0.6);
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-}
-
-@utility heading-section {
-  @apply text-3xl leading-none font-black text-slate-900 md:text-4xl lg:text-4xl dark:text-slate-100;
+  @apply rounded-2xl border glass border-slate-100 shadow-sm md:rounded-4xl dark:border-white/10;
 }
 
 @utility label-sm {

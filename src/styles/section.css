@@ -15,6 +15,10 @@
     @apply flex items-center gap-3;
   }
 
+  .section-heading {
+    @apply text-3xl leading-none font-black text-slate-900 md:text-4xl lg:text-4xl dark:text-slate-100;
+  }
+
   .section-icon {
     @apply flex-shrink-0 text-2xl text-primary-600 md:text-3xl dark:text-primary-400;
   }

@@ -226,15 +226,6 @@ locales:
           - year: 2022
             content: Received Ph.D. degree from the University of Tokyo on September 20.
 
-          - year: 2021
-            content: Joined the [Hatano Laboratory](http://hatano-lab.iis.u-tokyo.ac.jp/index-e.html) at the University of Tokyo as a MEXT Scholarship doctoral student.
-
-          - year: 2019
-            content: Gave a talk at the Symposium on Frontiers and Progress in Quantum Physics at Inner Mongolia University.
-
-          - year: 2017
-            content: Joined Prof. [Yi Xuexi's laboratory](https://cqs.nenu.edu.cn/) at the Center for Quantum Sciences for Master's research.
-
       - type: list
         id: awards
         title: Honors & Awards

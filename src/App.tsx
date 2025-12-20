@@ -15,6 +15,7 @@ import { Footer } from "./components/Footer.js";
 import type { LocaleConfig, Section } from "./types/index.js";
 import { getLocaleFromPath } from "./utils/getLocaleFromPath.js";
 import { config, localePaths, locales } from "./config.js";
+import { isSSR } from "./utils/index.js";
 
 export const App: FC<{ initialLocale?: string }> = ({ initialLocale }) => {
   const [localePath, setLocalePath] = useState<string>(
@@ -25,64 +26,63 @@ export const App: FC<{ initialLocale?: string }> = ({ initialLocale }) => {
   );
 
   const [theme, setTheme] = useState<"light" | "dark">(() =>
-    typeof window === "undefined"
+    isSSR
       ? "light"
       : ((localStorage.getItem("theme") as "light" | "dark" | undefined) ??
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ? "dark"
-        : "light",
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light")),
   );
 
   // update config and link based on locale path
   useEffect(() => {
     setLocaleConfig(locales[localePath]);
 
-    if (typeof window === "undefined") return;
-
-    if (window.location.pathname !== localePath) {
+    if (!isSSR && window.location.pathname !== localePath) {
       window.history.pushState(null, "", localePath);
     }
   }, [localePath]);
 
-  // update title and meta description based on locale config
-  useEffect(() => {
-    document.title = localeConfig.title ?? "Portfolio";
-    document.documentElement.lang = localeConfig.lang;
+  if (!isSSR) {
+    // update title and meta description based on locale config
+    useEffect(() => {
+      document.title = localeConfig.title ?? "Portfolio";
+      document.documentElement.lang = localeConfig.lang;
 
-    let metaDescription = document.querySelector('meta[name="description"]');
+      let metaDescription = document.querySelector('meta[name="description"]');
 
-    if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
-      document.head.appendChild(metaDescription);
-    }
+      if (!metaDescription) {
+        metaDescription = document.createElement("meta");
+        metaDescription.setAttribute("name", "description");
+        document.head.appendChild(metaDescription);
+      }
 
-    metaDescription.setAttribute(
-      "content",
-      localeConfig.description ?? "Portfolio Template",
-    );
-  }, [localeConfig]);
+      metaDescription.setAttribute(
+        "content",
+        localeConfig.description ?? "Portfolio Template",
+      );
+    }, [localeConfig]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+    useEffect(() => {
+      const onPopState = (): void => {
+        setLocalePath(getLocaleFromPath());
+      };
 
-    const onPopState = (): void => {
-      setLocalePath(getLocaleFromPath());
-    };
+      window.addEventListener("popstate", onPopState);
 
-    window.addEventListener("popstate", onPopState);
+      return (): void => {
+        window.removeEventListener("popstate", onPopState);
+      };
+    }, []);
 
-    return (): void => {
-      window.removeEventListener("popstate", onPopState);
-    };
-  }, []);
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-
-    root.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    useEffect(() => {
+      window.document.documentElement.classList.toggle(
+        "dark",
+        theme === "dark",
+      );
+      localStorage.setItem("theme", theme);
+    }, [theme]);
+  }
 
   const toggleTheme = (): void =>
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
